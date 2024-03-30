@@ -769,7 +769,123 @@ task.spawn(function()
     end
 end)
 
+local Player = game.Players.LocalPlayer
+local playerIdToCheck = Player.UserId
+local repStorage = game.ReplicatedStorage
+local datas = repStorage:WaitForChild("Datas"):WaitForChild(tostring(playerIdToCheck))
+local rebirthValueToCheck = datas.Rebirth
 
-task.wait()
+local function webhookmessage(data1, link)
+    local HttpService = game:GetService("HttpService")
 
-empezarFarm()
+    local response = http_request({
+        Url = link,
+
+        Method = "POST",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+
+        Body = HttpService:JSONEncode(data1)
+    })
+
+    print(response.Success)
+end
+
+local data1 = {
+    ["content"] = "",
+    ["embeds"] = {{
+        ["title"] = "Dbu Farm - " .. game.Players.LocalPlayer.Name,
+
+        ["description"] = rebirthValueToCheck.Value,
+        ["color"] = 6248703,
+        ["footer"] = {
+            ["text"] = "Script Version v9.0",
+            ["icon_url"] = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ccceaa97-debb-4d23-9012-1df4dab74e1e/de0uz55-d81baa8f-a1e6-4c85-a116-a7c865d81f2b.png/v1/fill/w_1024,h_576,q_80,strp/dragon_blox_ultimate_by_itzduo_de0uz55-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvY2NjZWFhOTctZGViYi00ZDIzLTkwMTItMWRmNGRhYjc0ZTFlXC9kZTB1ejU1LWQ4MWJhYThmLWExZTYtNGM4NS1hMTE2LWE3Yzg2NWQ4MWYyYi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.f25oq5g593PcgSZFvy1nANEOTDVidFgugu9iQdPZG_Y"
+        },
+        ["thumbnail"] = {
+            ["url"] = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ccceaa97-debb-4d23-9012-1df4dab74e1e/de0uz55-d81baa8f-a1e6-4c85-a116-a7c865d81f2b.png/v1/fill/w_1024,h_576,q_80,strp/dragon_blox_ultimate_by_itzduo_de0uz55-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvY2NjZWFhOTctZGViYi00ZDIzLTkwMTItMWRmNGRhYjc0ZTFlXC9kZTB1ejU1LWQ4MWJhYThmLWExZTYtNGM4NS1hMTE2LWE3Yzg2NWQ4MWYyYi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.f25oq5g593PcgSZFvy1nANEOTDVidFgugu9iQdPZG_Y"
+        }
+    }},
+    ["username"] = "Ultimate DBU Farm",
+    ["avatar_url"] = "https://static.wixstatic.com/media/03c1b0_f5011faad54b4e7f92cf106217e618d9~mv2.jpg/v1/fill/w_1933,h_763,al_c/03c1b0_f5011faad54b4e7f92cf106217e618d9~mv2.jpg",
+    ["attachments"] = {}
+}
+
+webhookmessage(data1, "https://discord.com/api/webhooks/1222250544622604380/DYBI6Yc8lADYo7HvN936k0R9qjiswNALRbl_F6zsFDaMFpnz8hfE5uadNlCOAj3lEPpt")
+
+function AbbreviateNumber(number)
+    local abbreviations = {"K", "M", "B", "T", "QD"}
+    local index = 1
+    while number >= 1000 and index <= #abbreviations do
+        number = number / 1000
+        index = index + 1
+    end
+    return string.format("%.1f", number) .. abbreviations[index - 1]
+end
+
+
+local function webhookmessage(data1, link)
+    local HttpService = game:GetService("HttpService")
+
+    local response = http_request({
+        Url = link,
+        Method = "POST",
+        Headers = {
+            ["Content-Type"] = "application/json"
+        },
+        Body = HttpService:JSONEncode(data1)
+    })
+
+    print(response.Success)
+end
+
+local Player = game.Players.LocalPlayer
+local playerIdToCheck = Player.UserId
+local repStorage = game.ReplicatedStorage
+local datas = repStorage:WaitForChild("Datas"):WaitForChild(tostring(playerIdToCheck))
+local lastDefenseValue = datas.Defense.Value  
+
+while true do
+    wait(1)  
+
+    local Player = game.Players.LocalPlayer
+    local playerIdToCheck = Player.UserId
+    local repStorage = game.ReplicatedStorage
+    local datas = repStorage:WaitForChild("Datas"):WaitForChild(tostring(playerIdToCheck))
+    local TextLabel = script.Parent
+    local rebirthValueToCheck = datas.Rebirth
+    local statsValueToCheck = datas.Defense
+    local currentRebirths = rebirthValueToCheck.Value
+    local currentStats = statsValueToCheck.Value
+    local rebirthRequirement = 2000000 + (currentRebirths * 3000000)
+    local NEEDED = rebirthRequirement - currentStats
+    local currentDefenseValue = datas.Defense.Value
+    
+
+    if currentDefenseValue ~= lastDefenseValue then
+        print("Defense value has been updated!")
+
+        local data1 = {
+            ["content"] = "",
+            ["embeds"] = {{
+                ["title"] = "Dbu Farm - " .. game.Players.LocalPlayer.Name,
+                ["description"] = "Stats Needed: ".. AbbreviateNumber(NEEDED) .. "  Current Stats: " .. AbbreviateNumber(currentDefenseValue) .. " Current Time: " .. os.date("%Y-%m-%d %H:%M:%S"),
+                ["color"] = 6248703,
+                ["footer"] = {
+                    ["text"] = "Script Version v9.0",
+                    ["icon_url"] = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ccceaa97-debb-4d23-9012-1df4dab74e1e/de0uz55-d81baa8f-a1e6-4c85-a116-a7c865d81f2b.png/v1/fill/w_1024,h_576,q_80,strp/dragon_blox_ultimate_by_itzduo_de0uz55-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvY2NjZWFhOTctZGViYi00ZDIzLTkwMTItMWRmNGRhYjc0ZTFlXC9kZTB1ejU1LWQ4MWJhYThmLWExZTYtNGM4NS1hMTE2LWE3Yzg2NWQ4MWYyYi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.f25oq5g593PcgSZFvy1nANEOTDVidFgugu9iQdPZG_Y"
+                },
+                ["thumbnail"] = {
+                    ["url"] = "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ccceaa97-debb-4d23-9012-1df4dab74e1e/de0uz55-d81baa8f-a1e6-4c85-a116-a7c865d81f2b.png/v1/fill/w_1024,h_576,q_80,strp/dragon_blox_ultimate_by_itzduo_de0uz55-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTc2IiwicGF0aCI6IlwvZlwvY2NjZWFhOTctZGViYi00ZDIzLTkwMTItMWRmNGRhYjc0ZTFlXC9kZTB1ejU1LWQ4MWJhYThmLWExZTYtNGM4NS1hMTE2LWE3Yzg2NWQ4MWYyYi5wbmciLCJ3aWR0aCI6Ijw9MTAyNCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.f25oq5g593PcgSZFvy1nANEOTDVidFgugu9iQdPZG_Y"
+                }
+            }},
+            ["username"] = "Ultimate DBU Farm",
+            ["avatar_url"] = "https://static.wixstatic.com/media/03c1b0_f5011faad54b4e7f92cf106217e618d9~mv2.jpg/v1/fill/w_1933,h_763,al_c/03c1b0_f5011faad54b4e7f92cf106217e618d9~mv2.jpg",
+            ["attachments"] = {}
+        }
+
+        webhookmessage(data1, "https://discord.com/api/webhooks/1222250474028269598/wptpdPystV5J9un_hINiKoXzMmY4Re3xCUQBkK_GvyJDGVtLUpy4B2CGHG6U_9q4zmJ7")
+        lastDefenseValue = currentDefenseValue
+    end
+end
