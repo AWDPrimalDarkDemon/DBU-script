@@ -1,4 +1,4 @@
-local whitelist = {"SER1AL_K1LLA", "Alexlekiller_2", "Manshx_9", "zorosamurai2008"}
+local whitelist = {"SER1AL_K1LLA", "Alexlekiller_2", "Manshx_9", "zorosamurai2008", "shisuiuchiwa016", "exyler4", "salah2238"}
  
 local isWhitelisted = false
 for _, player in ipairs(whitelist) do
@@ -452,7 +452,7 @@ function mundoBills()
 end
 
 function validacionPlanetas()
-	local billsTP = 1200000000
+	local billsTP = 120000000
 
 	print('Validando el planeta')
 
