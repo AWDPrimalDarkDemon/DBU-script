@@ -1,1 +1,340 @@
 
+local Material = loadstring(game:HttpGet("https://raw.githubusercontent.com/Kinlei/MaterialLua/master/Module.lua"))()
+
+local UI = Material.Load({
+    Title = "Dragon Blox Ultimate V1.2 Private",
+    Style = 1,
+    SizeX = 350,
+    SizeY = 350,
+    Theme = "Dark", -- Change the theme to Dark for a blueish-blackish color scheme
+    ColorOverrides = {
+        MainFrame = Color3.fromRGB(42, 63, 81) -- Adjust this color to your desired blueish-blackish color
+    }
+})
+
+
+
+local Page = UI.New({
+    Title = "Extra"
+})
+
+
+
+
+
+
+
+
+local localPlayer = game.Players.LocalPlayer
+
+-- Function to get names of all players except the local player
+local function getPlayerNames()
+    local players = game.Players:GetPlayers()
+    local playerNames = {}
+    for _, player in ipairs(players) do
+        if player ~= localPlayer then
+            table.insert(playerNames, player.Name)
+        end
+    end
+    return playerNames
+end
+
+
+getgenv().SelectedPlayer = nil
+
+Page.Dropdown({
+    Text = "Select Player",
+    Callback = function(Value)
+        getgenv().SelectedPlayer = Value
+        print("Selected player:", Value)
+        Page2.Toggle.SetEnabled(Page2.Toggle.FindFirstChild("Auto Kill Player"), true)
+    end,
+    Options = getPlayerNames(), 
+    Menu = {
+        Information = function(self)
+            X.Banner({
+                Text = "Test alert!"
+            })
+        end
+    }
+})
+
+
+local player = game.Players.LocalPlayer
+local userInputService = game:GetService("UserInputService")
+
+getgenv().SelectedPlayer = nil
+
+_G.mecra = true
+_G.mecha = true
+_G.mach = true
+_G.gs = true
+_G.df = true
+_G.fk = true
+_G.sbc = true
+_G.hpr = true
+_G.wff = true
+_G.bc = true
+_G.vs = true
+_G.u = true 
+_G.s = true
+_G.EV = true
+
+
+local function AutoKill()
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.mecra then
+                local args = {"Meteor Crash", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.mecha then
+                local args = {"Meteor Charge", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.mach then
+                local args = {"Mach Kick", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.gs then
+                local args = {"God Slicer", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.df then
+                local args = {"Super Dragon Fist", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.fk then
+                local args = {"Flash Kick", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.sbc then
+                local args = {"Spirit Breaking Cannon", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.hpr then
+                local args = {"High Power Rush", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.wff then
+                local args = {"Wolf Fang Fist", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.bc then
+                local args = {"Bone Crusher", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.vs then
+                local args = {"Vanish Strike", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.u then
+                local args = {"Uppercut", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.EV then
+                local args = {"Energy Volley","Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.me1.InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+
+    spawn(function()
+        while _G.AutoKillEnabled do
+            if _G.s then
+                local args = {"Sledgehammer", "Blacknwhite27"}
+                game:GetService("ReplicatedStorage").Package.Events.mel:InvokeServer(unpack(args))
+            end
+            wait()
+        end
+    end)
+end
+
+Page.Toggle({
+    Text = "Auto-Kill",
+    Callback = function(Value)
+        _G.AutoKillEnabled = Value
+        getgenv().followp = Value
+        
+        -- Toggle auto-kill
+        if _G.AutoKillEnabled then
+            AutoKill()
+        end
+        
+        -- Toggle follow player
+        while getgenv().followp do
+            task.wait()
+            if not getgenv().followp then
+                break
+            end
+            repeat
+                task.wait()
+                pcall(function()
+                    local selectedPlayer = getgenv().SelectedPlayer
+                    if selectedPlayer then
+                        local playerToFollow = game.Players:FindFirstChild(selectedPlayer)
+                        if playerToFollow then
+                            local Echar = playerToFollow.Character
+                            local myChar = player.Character
+                            myChar.HumanoidRootPart.CFrame = Echar:GetPrimaryPartCFrame() * CFrame.new(0, 0, 2)
+                        end
+                    end
+                end)
+            until not getgenv().followp
+        end
+    end,
+    Enabled = false
+})
+
+userInputService.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.W or input.KeyCode == Enum.KeyCode.A or input.KeyCode == Enum.KeyCode.S or input.KeyCode == Enum.KeyCode.D then
+            if not getgenv().followp then
+                userInputService.ModalEnabled = false
+            end
+        end
+    end
+end)
+
+userInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.W or input.KeyCode == Enum.KeyCode.A or input.KeyCode == Enum.KeyCode.S or input.KeyCode == Enum.KeyCode.D then
+            if not getgenv().followp then
+                userInputService.ModalEnabled = true
+            end
+        end
+    end
+end)
+
+
+
+
+
+
+-- Define a global variable to store the selected player
+getgenv().SelectedPlayer = nil
+
+local player = game.Players.LocalPlayer
+local userInputService = game:GetService("UserInputService")
+
+Page.Toggle({
+    Text = "Follow Player",
+    Callback = function(Value)
+        getgenv().followp = Value
+        while getgenv().followp == true do
+            task.wait()
+            if getgenv().followp ~= true then
+                break
+            end
+            repeat
+                task.wait()
+                pcall(function()
+                    local selectedPlayer = getgenv().SelectedPlayer
+                    if selectedPlayer then
+                        local playerToFollow = game.Players:FindFirstChild(selectedPlayer)
+                        if playerToFollow then
+                            local Echar = playerToFollow.Character
+                            local myChar = player.Character
+                            myChar.HumanoidRootPart.CFrame = Echar:GetPrimaryPartCFrame() * CFrame.new(0, 0, 1)
+                        end
+                    end
+                end)
+            until getgenv().followp == false
+        end
+    end,
+    Enabled = false
+})
+
+
+userInputService.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.W or input.KeyCode == Enum.KeyCode.A or input.KeyCode == Enum.KeyCode.S or input.KeyCode == Enum.KeyCode.D then
+            if getgenv().followp == false then
+                userInputService.ModalEnabled = false
+            end
+        end
+    end
+end)
+
+userInputService.InputEnded:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.Keyboard then
+        if input.KeyCode == Enum.KeyCode.W or input.KeyCode == Enum.KeyCode.A or input.KeyCode == Enum.KeyCode.S or input.KeyCode == Enum.KeyCode.D then
+            if getgenv().followp == false then
+                userInputService.ModalEnabled = true
+            end
+        end
+    end
+end)
